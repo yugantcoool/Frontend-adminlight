@@ -1,0 +1,14 @@
+<nb-card>
+    <nb-card-header>
+        <nb-icon icon="alert-triangle-outline" status="info"></nb-icon>Confirm
+    </nb-card-header>
+    <nb-card-body>
+        <span>
+            Are you sure you want to delete <b>{{ accountName }}</b> ?
+        </span>
+    </nb-card-body>
+    <nb-card-footer>
+        <button class="confirmationButtons" nbButton (click)="confirm()">Confirm</button>
+        <button class="confirmationButtons" nbButton (click)="close()">Cancel</button>
+    </nb-card-footer>
+</nb-card>

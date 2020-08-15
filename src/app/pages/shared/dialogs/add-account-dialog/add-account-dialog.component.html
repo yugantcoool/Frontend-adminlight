@@ -1,0 +1,40 @@
+<nb-card>
+    <nb-card-header>
+        <nb-icon icon="alert-triangle-outline" status="info"></nb-icon>Add New Account
+    </nb-card-header>
+    <nb-card-body>
+        <span>
+            <div class="row marginTop">
+                <div class="col-5">
+                    <span> Account Name : </span>
+                </div>
+                <div class="col-5">
+                    <input nbInput type="text" [(ngModel)]="accountName" placeholder="Account Name">
+                </div>
+            </div>
+
+            <div class="row marginTop">
+                <div class="col-5">
+                    <span> Account Number : </span>
+                </div>
+                <div class="col-5">
+                    <input nbInput [(ngModel)]="accountNumber" type="number" placeholder="Account Number">
+                </div>
+            </div>
+
+            <div class="row marginTop">
+                <div class="col-5">
+                    <span> Account Type : </span>
+                </div>
+                <div class="col-5">
+                    <input nbInput type="text" [(ngModel)]="accountType" placeholder="Account Type">
+                </div>
+            </div>
+
+        </span>
+    </nb-card-body>
+    <nb-card-footer>
+        <button class="confirmationButtons" nbButton (click)="confirm()">Confirm</button>
+        <button class="confirmationButtons" nbButton (click)="close()">Cancel</button>
+    </nb-card-footer>
+</nb-card>

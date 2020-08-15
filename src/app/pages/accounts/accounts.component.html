@@ -1,0 +1,51 @@
+<nb-card>
+    <nb-card-body>
+
+        <div>
+            <label class="search-label" for="search">Search:</label>
+            <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input">
+            <button nbButton class="btn_addAccount" size="medium" status="primary" (click)="addAccount()">
+                <nb-icon icon="plus-circle-outline"></nb-icon>Add
+                Account
+            </button>
+        </div>
+
+        <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
+
+            <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="defaultColumns"></tr>
+            <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: defaultColumns"></tr>
+
+            <ng-container *ngFor="let column of defaultColumns; let index = index" [nbTreeGridColumnDef]="column"
+                [showOn]="getShowOn(index)">
+                <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
+                    <div [ngSwitch]="column">
+                        <span *ngSwitchCase="'accountName'">Name</span>
+                        <span *ngSwitchCase="'accountNumber'">Number</span>
+                        <span *ngSwitchCase="'accountType'">Type</span>
+                        <span *ngSwitchCase="'Sr.No'">Sr. No</span>
+                        <span *ngSwitchCase="'Actions'">Action</span>
+                    </div>
+                </th>
+                <td nbTreeGridCell *nbTreeGridCellDef="let row; ">
+                    <span *ngIf="column != 'Actions'">{{row.data[column]}}</span>
+                    <span *ngIf="column == 'Actions'">
+
+                        <nb-layout>
+                            <nb-layout-header>
+                                <button class="contextMenuButtons" outline nbButton (click)="editAccount(row)">
+                                    <nb-icon icon="edit-outline" status="info"></nb-icon>
+                                </button>
+                                <button class="contextMenuButtons" outline nbButton (click)="deleteAccount(row)">
+                                    <nb-icon icon="trash-outline" status="danger"></nb-icon>
+                                </button>
+                            </nb-layout-header>
+                        </nb-layout>
+                    </span>
+                </td>
+            </ng-container>
+
+
+        </table>
+
+    </nb-card-body>
+</nb-card>
